@@ -107,9 +107,9 @@
     <property name="dynamic.classpath" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/javafx-sdk-13.0.1/lib" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RecentsManager">
@@ -241,14 +241,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Initial Commit with UI" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="395" y="124" width="802" height="672" key="#Project_Structure" timestamp="1576717197492">
+      <screen x="0" y="25" width="1600" height="875" />
+    </state>
+    <state x="395" y="124" width="802" height="672" key="#Project_Structure/0.25.1600.875@0.25.1600.875" timestamp="1576717197492" />
     <state x="258" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576713970394">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
     <state x="258" y="120" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1600.875@0.25.1600.875" timestamp="1576713970393" />
-    <state x="481" y="60" width="629" height="800" key="CommitChangelistDialog2" timestamp="1576714335064">
+    <state x="481" y="60" width="629" height="800" key="CommitChangelistDialog2" timestamp="1576717149233">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state x="481" y="60" width="629" height="800" key="CommitChangelistDialog2/0.25.1600.875@0.25.1600.875" timestamp="1576714335064" />
+    <state x="481" y="60" width="629" height="800" key="CommitChangelistDialog2/0.25.1600.875@0.25.1600.875" timestamp="1576717149233" />
     <state x="486" y="204" width="612" height="507" key="FileChooserDialogImpl" timestamp="1576713912075">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
