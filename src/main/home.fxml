@@ -14,35 +14,35 @@
       <AnchorPane fx:id="definitiveStack2" layoutX="475.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
       <AnchorPane fx:id="definitiveStack3" layoutX="566.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
       <AnchorPane fx:id="definitiveStack4" layoutX="657.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="stack1" layoutX="20.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackA" layoutX="20.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack2" layoutX="111.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackB" layoutX="111.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack3" layoutX="202.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackC" layoutX="202.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack4" layoutX="293.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackD" layoutX="293.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack5" layoutX="384.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackE" layoutX="384.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack6" layoutX="475.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackF" layoutX="475.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack7" layoutX="566.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackG" layoutX="566.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="stack8" layoutX="657.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+      <AnchorPane fx:id="stackH" layoutX="657.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>

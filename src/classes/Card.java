@@ -14,12 +14,14 @@ public class Card {
     private String value;
     private String imgPath;
     private ImageView container;
+    private int currentStack;
 
     public Card(int suit, String value){
         this.setSuit(suit);
         this.setValue(value);
         this.setImgPath(suit, value);
         this.setContainer();
+        this.currentStack = 0;
     }
 
     public void setContainer() {
@@ -68,6 +70,14 @@ public class Card {
         }
 
         this.imgPath = path;
+    }
+
+    public int getCurrentStack() {
+        return currentStack;
+    }
+
+    public void setCurrentStack(int currentStack) {
+        this.currentStack = currentStack;
     }
 
     public static ArrayList <Card> loadSuit(int suit){

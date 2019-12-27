@@ -30,7 +30,15 @@ public class MiddleStack {
         }
     }
 
-    public void shuffleAdd(Card card){
+    public void push(Card card){
         stack.add(card);
+    }
+
+    public Card unStack(){
+        if(stack.size() > 0){
+            return stack.get(stack.size() - 1);
+        } else {
+            return null;
+        }
     }
 }
