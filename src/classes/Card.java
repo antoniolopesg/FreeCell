@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Card {
     public static final int CLUBS = 1;
-    public static final int DIAMONDS = 2;
-    public static final int HEARTS = 3;
-    public static final int SPADES = 4;
+    public static final int DIAMONDS = -1;
+    public static final int HEARTS = -2;
+    public static final int SPADES = 2;
 
     private int suit;
     private String value;
@@ -89,5 +89,9 @@ public class Card {
         deck.addAll(loadSuit(Card.SPADES));
 
         return deck;
+    }
+
+    public static boolean diffColors(int suit1, int suit2){
+        return suit1 > 0 && suit2 < 0 || suit1 < 0 && suit2 > 0;
     }
 }

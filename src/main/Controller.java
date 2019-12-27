@@ -1,13 +1,15 @@
 package main;
 
 import classes.Card;
+import classes.MiddleStack;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
@@ -45,12 +47,25 @@ public class Controller implements Initializable {
     public AnchorPane stack7;
     public AnchorPane stack8;
 
+    public MiddleStack stackA;
+    public MiddleStack stackB;
+    public MiddleStack stackC;
+    public MiddleStack stackD;
+    public MiddleStack stackE;
+    public MiddleStack stackF;
+    public MiddleStack stackG;
+    public MiddleStack stackH;
+
     public ArrayList<Card> deck;
     public Card selectedCard;
+    public AnchorPane mainAnchor;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         deck = Card.loadCards();
+        selectedCard = null;
+//        setOnClickStacks();
+        initializeStacks();
         shuffleCards();
     }
 
@@ -66,27 +81,35 @@ public class Controller implements Initializable {
             switch (generator.nextInt(8)){
                 case 0:
                     next = stack1;
+                    stackA.shuffleAdd(nextCard);
                     break;
                 case 1:
                     next = stack2;
+                    stackB.shuffleAdd(nextCard);
                     break;
                 case 2:
                     next = stack3;
+                    stackC.shuffleAdd(nextCard);
                     break;
                 case 3:
                     next = stack4;
+                    stackD.shuffleAdd(nextCard);
                     break;
                 case 4:
                     next = stack5;
+                    stackE.shuffleAdd(nextCard);
                     break;
                 case 5:
                     next = stack6;
+                    stackF.shuffleAdd(nextCard);
                     break;
                 case 6:
                     next = stack7;
+                    stackG.shuffleAdd(nextCard);
                     break;
                 case 7:
                     next = stack8;
+                    stackH.shuffleAdd(nextCard);
                     break;
             }
 
@@ -94,8 +117,13 @@ public class Controller implements Initializable {
 
             ImageView cont = nextCard.getContainer();
 
-            stylizeCard(cont);
+            if(deck.size() == 0){
+                cont.setOnMouseClicked(mouseEvent -> {
+                    this.selectedCard = nextCard;
+                });
+            }
 
+            stylizeCard(cont);
 
             if(childrens.size() > 0){
                 int size = childrens.size();
@@ -116,4 +144,33 @@ public class Controller implements Initializable {
         shadow.setColor(Color.color(0, 0, 0, 0.8));
         container.setEffect(shadow);
     }
+
+    public void initializeStacks(){
+        stackA = new MiddleStack();
+        stackB = new MiddleStack();
+        stackC = new MiddleStack();
+        stackD = new MiddleStack();
+        stackE = new MiddleStack();
+        stackF = new MiddleStack();
+        stackG = new MiddleStack();
+        stackH = new MiddleStack();
+    }
+
+//    public void setOnClickStacks(){
+//        stack1.setOnMouseClicked(this::ClickHandler);
+//        stack2.setOnMouseClicked(this::ClickHandler);
+//        stack3.setOnMouseClicked(this::ClickHandler);
+//        stack4.setOnMouseClicked(this::ClickHandler);
+//        stack5.setOnMouseClicked(this::ClickHandler);
+//        stack6.setOnMouseClicked(this::ClickHandler);
+//        stack7.setOnMouseClicked(this::ClickHandler);
+//        stack8.setOnMouseClicked(this::ClickHandler);
+//    }
+
+//    public void ClickHandler(MouseEvent mouseEvent) {
+//        if(selectedCard != null){
+//
+//        }
+//    }
+
 }
