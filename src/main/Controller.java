@@ -1,8 +1,13 @@
 package main;
 
+import classes.Card;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -34,8 +39,51 @@ public class Controller implements Initializable {
     public AnchorPane stack7;
     public AnchorPane stack8;
 
+    public ArrayList<Card> deck;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Hello");
+        deck = Card.loadCards();
+        shuffleCards();
+    }
+
+    public void shuffleCards(){
+        Random generator = new Random();
+
+        while(deck.size() > 0){
+            AnchorPane next = null;
+
+            int nextIndex = generator.nextInt(deck.size());
+            Card nextCard = deck.remove(nextIndex);
+
+            switch (generator.nextInt(8)){
+                case 0:
+                    next = stack1;
+                    break;
+                case 1:
+                    next = stack2;
+                    break;
+                case 2:
+                    next = stack3;
+                    break;
+                case 3:
+                    next = stack4;
+                    break;
+                case 4:
+                    next = stack5;
+                    break;
+                case 5:
+                    next = stack6;
+                    break;
+                case 6:
+                    next = stack7;
+                    break;
+                case 7:
+                    next = stack8;
+                    break;
+            }
+
+            next.getChildren().add(nextCard.getContainer());
+        }
     }
 }

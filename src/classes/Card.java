@@ -2,8 +2,6 @@ package classes;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Card {
@@ -21,6 +19,7 @@ public class Card {
         this.setSuit(suit);
         this.setValue(value);
         this.setImgPath(suit, value);
+        this.setContainer();
     }
 
     public void setContainer() {
@@ -56,16 +55,16 @@ public class Card {
 
         switch (suit){
             case CLUBS:
-                path = "src/cards/clubs/" + this.getValue() + ".png";
+                path = "cards/clubs/" + this.getValue() + ".png";
                 break;
             case DIAMONDS:
-                path = "src/cards/diamonds/" + this.getValue() + ".png";
+                path = "cards/diamonds/" + this.getValue() + ".png";
                 break;
             case HEARTS:
-                path = "src/cards/hearts/" + this.getValue() + ".png";
+                path = "cards/hearts/" + this.getValue() + ".png";
                 break;
             default:
-                path = "src/cards/spades/" + this.getValue() + ".png";
+                path = "cards/spades/" + this.getValue() + ".png";
         }
 
         this.imgPath = path;
@@ -79,5 +78,16 @@ public class Card {
         }
 
         return suitCards;
+    }
+
+    public static ArrayList<Card> loadCards(){
+        ArrayList<Card> deck = new ArrayList<>();
+
+        deck.addAll(loadSuit(Card.CLUBS));
+        deck.addAll(loadSuit(Card.DIAMONDS));
+        deck.addAll(loadSuit(Card.HEARTS));
+        deck.addAll(loadSuit(Card.SPADES));
+
+        return deck;
     }
 }

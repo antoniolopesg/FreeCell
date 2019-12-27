@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:controller="main.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="748.0" style="-fx-background-color: #16a085;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="748.0" style="-fx-background-color: #16a085;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
     <children>
       <AnchorPane fx:id="movementSpace1" layoutX="20.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
       <AnchorPane fx:id="movementSpace2" layoutX="111.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
