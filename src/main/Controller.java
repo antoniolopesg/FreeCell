@@ -1,9 +1,15 @@
 package main;
 
 import classes.Card;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -40,6 +46,7 @@ public class Controller implements Initializable {
     public AnchorPane stack8;
 
     public ArrayList<Card> deck;
+    public Card selectedCard;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,7 +90,30 @@ public class Controller implements Initializable {
                     break;
             }
 
-            next.getChildren().add(nextCard.getContainer());
+            ObservableList<Node> childrens = next.getChildren();
+
+            ImageView cont = nextCard.getContainer();
+
+            stylizeCard(cont);
+
+
+            if(childrens.size() > 0){
+                int size = childrens.size();
+                cont.setLayoutY(childrens.get(size - 1).getLayoutY() + 17);
+            }
+            childrens.add(cont);
         }
+    }
+
+    public void stylizeCard(ImageView container){
+        container.setCursor(Cursor.CLOSED_HAND);
+        container.setOpacity(0.95);
+
+        DropShadow shadow = new DropShadow();
+        shadow.setRadius(3.0);
+        shadow.setOffsetX(1.0);
+        shadow.setOffsetY(1.0);
+        shadow.setColor(Color.color(0, 0, 0, 0.8));
+        container.setEffect(shadow);
     }
 }
