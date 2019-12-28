@@ -2,8 +2,15 @@ package main;
 
 import classes.Card;
 import classes.MiddleStack;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,44 +68,79 @@ public class Controller implements Initializable {
         Random generator = new Random();
 
         while(deck.size() > 0){
+            AnchorPane next = null;
+
             int nextIndex = generator.nextInt(deck.size());
             Card nextCard = deck.remove(nextIndex);
 
             switch (generator.nextInt(8)){
                 case 0:
+                    next = stackA;
                     nextCard.setCurrentStack(1);
                     stack1.push(nextCard);
                     break;
                 case 1:
+                    next = stackB;
                     nextCard.setCurrentStack(2);
                     stack2.push(nextCard);
                     break;
                 case 2:
+                    next = stackC;
                     nextCard.setCurrentStack(3);
                     stack3.push(nextCard);
                     break;
                 case 3:
+                    next = stackD;
                     nextCard.setCurrentStack(4);
                     stack4.push(nextCard);
                     break;
                 case 4:
+                    next = stackE;
                     nextCard.setCurrentStack(5);
                     stack5.push(nextCard);
                     break;
                 case 5:
+                    next = stackF;
                     nextCard.setCurrentStack(6);
                     stack6.push(nextCard);
                     break;
                 case 6:
+                    next = stackG;
                     nextCard.setCurrentStack(7);
                     stack7.push(nextCard);
                     break;
                 case 7:
+                    next = stackH;
                     nextCard.setCurrentStack(8);
                     stack8.push(nextCard);
                     break;
             }
+
+            ObservableList<Node> childrens = next.getChildren();
+            ImageView cont = nextCard.getContainer();
+
+            stylizeCard(cont);
+
+            if(childrens.size() > 0) {
+                int size = childrens.size();
+                cont.setLayoutY(childrens.get(size - 1).getLayoutY() + 17);
+            }
+            childrens.add(cont);
         }
+
+        setEvents();
+    }
+
+    public void stylizeCard(ImageView container){
+        container.setCursor(Cursor.CLOSED_HAND);
+        container.setOpacity(0.95);
+
+        DropShadow shadow = new DropShadow();
+        shadow.setRadius(3.0);
+        shadow.setOffsetX(1.0);
+        shadow.setOffsetY(1.0);
+        shadow.setColor(Color.color(0, 0, 0, 0.8));
+        container.setEffect(shadow);
     }
 
     public void initializeMiddleStacks(){
@@ -110,5 +152,46 @@ public class Controller implements Initializable {
         stack6 = new MiddleStack();
         stack7 = new MiddleStack();
         stack8 = new MiddleStack();
+    }
+
+    public void setEvents(){
+        for (int i = 1; i <= 8; i++){
+            MiddleStack stack = IntMiddleStack(i);
+            stack.top().getContainer().setOnMouseClicked(mouseEvent -> {
+                this.selectedCard = stack.top();
+            });
+        }
+    }
+
+    public MiddleStack IntMiddleStack(int stackInt){
+        MiddleStack stack = null;
+        switch (stackInt){
+            case 1:
+                stack = stack1;
+                break;
+            case 2:
+                stack = stack2;
+                break;
+            case 3:
+                stack = stack3;
+                break;
+            case 4:
+                stack = stack4;
+                break;
+            case 5:
+                stack = stack5;
+                break;
+            case 6:
+                stack = stack6;
+                break;
+            case 7:
+                stack = stack7;
+                break;
+            case 8:
+                stack = stack8;
+                break;
+        }
+
+        return stack;
     }
 }

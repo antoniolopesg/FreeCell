@@ -3,7 +3,7 @@ package classes;
 import java.util.ArrayList;
 
 public class MiddleStack {
-    private ArrayList<Card> stack;
+    public ArrayList<Card> stack;
 
     public MiddleStack(){
         stack = new ArrayList<Card>();
