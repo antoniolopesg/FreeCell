@@ -12,10 +12,10 @@ public class MiddleStack {
     public boolean canPush(Card selected){
         if(stack.size() == 0) return true;
 
-        int selectedValue = Integer.getInteger(selected.getValue());
-        int lastValue = Integer.getInteger(stack.get(stack.size() - 1).getValue());
+        int selectedValue = Integer.parseInt(selected.getValue());
+        int lastValue = Integer.parseInt(top().getValue());
 
-        if(selectedValue < lastValue){
+        if(selectedValue + 1 == lastValue){
             return Card.diffColors(selected.getSuit(), top().getSuit());
         }
 

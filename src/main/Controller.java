@@ -8,12 +8,12 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -62,6 +62,7 @@ public class Controller implements Initializable {
         selectedCard = null;
         initializeMiddleStacks();
         fillStacks(Card.loadCards());
+        setEventClickAnchors();
     }
 
     public void fillStacks(ArrayList<Card> deck){
@@ -193,5 +194,75 @@ public class Controller implements Initializable {
         }
 
         return stack;
+    }
+
+    public void setEventClickAnchors(){
+        stackA.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackA);
+        });
+
+        stackB.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackB);
+        });
+
+        stackC.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackC);
+        });
+
+        stackD.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackD);
+        });
+
+        stackE.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackE);
+        });
+
+        stackF.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackF);
+        });
+
+        stackG.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackG);
+        });
+
+        stackH.setOnMouseClicked(mouseEvent -> {
+            clickedAnchorPane(mouseEvent, stackH);
+        });
+    }
+
+    public MiddleStack AnchorMiddleStack(AnchorPane stack){
+        MiddleStack stackM = null;
+
+        if(stack.equals(stackA)){
+            stackM = stack1;
+        } else if(stack.equals(stackB)){
+            stackM = stack2;
+        } else if(stack.equals(stackC)){
+            stackM = stack3;
+        } else if(stack.equals(stackD)){
+            stackM = stack4;
+        } else if(stack.equals(stackE)){
+            stackM = stack5;
+        } else if(stack.equals(stackF)){
+            stackM = stack6;
+        } else if(stack.equals(stackG)){
+            stackM = stack7;
+        } else {
+            stackM = stack8;
+        }
+
+        return stackM;
+    }
+
+    public void clickedAnchorPane(MouseEvent mouseEvent, AnchorPane stack){
+        if(this.selectedCard != null){
+            MiddleStack clickedStack = AnchorMiddleStack(stack);
+            if(clickedStack.canPush(this.selectedCard)){
+                System.out.println("pode mover");
+
+            } else {
+                System.out.println("não pode mover");
+            }
+        }
     }
 }
