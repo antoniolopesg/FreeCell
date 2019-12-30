@@ -2,6 +2,7 @@ package main;
 
 import classes.Card;
 import classes.MiddleStack;
+import classes.MovementSpace;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
@@ -9,10 +10,19 @@ public abstract class Attr implements Initializable {
     /**
      * AnchorPane dos espaços de movimentação
      */
-    public AnchorPane movementSpace1;
-    public AnchorPane movementSpace2;
-    public AnchorPane movementSpace3;
-    public AnchorPane movementSpace4;
+    public AnchorPane movementSpaceA;
+    public AnchorPane movementSpaceB;
+    public AnchorPane movementSpaceC;
+    public AnchorPane movementSpaceD;
+
+    /**
+     * Classes dos espaços de movimentação
+     */
+
+    public MovementSpace movementSpace1;
+    public MovementSpace movementSpace2;
+    public MovementSpace movementSpace3;
+    public MovementSpace movementSpace4;
 
     /**
      * AnchorPane das pilhas definitivas

@@ -102,6 +102,6 @@ public class Card {
     }
 
     public static boolean diffColors(int suit1, int suit2){
-        return suit1 > 0 && suit2 < 0 || suit1 < 0 && suit2 > 0;
+        return (suit1 > 0 && suit2 < 0) || (suit1 < 0 && suit2 > 0);
     }
 }

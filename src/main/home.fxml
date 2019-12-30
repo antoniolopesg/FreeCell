@@ -6,10 +6,22 @@
 
 <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="748.0" style="-fx-background-color: #16a085;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
     <children>
-      <AnchorPane fx:id="movementSpace1" layoutX="20.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="movementSpace2" layoutX="111.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="movementSpace3" layoutX="202.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="movementSpace4" layoutX="293.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
+      <AnchorPane fx:id="movementSpaceA" layoutX="20.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <padding>
+            <Insets bottom="-1.0" left="-1.0" />
+         </padding></AnchorPane>
+      <AnchorPane fx:id="movementSpaceB" layoutX="111.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <padding>
+            <Insets bottom="-1.0" left="-1.0" />
+         </padding></AnchorPane>
+      <AnchorPane fx:id="movementSpaceC" layoutX="202.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <padding>
+            <Insets bottom="-1.0" left="-1.0" />
+         </padding></AnchorPane>
+      <AnchorPane fx:id="movementSpaceD" layoutX="293.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <padding>
+            <Insets bottom="-1.0" left="-1.0" />
+         </padding></AnchorPane>
       <AnchorPane fx:id="definitiveStack1" layoutX="384.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
       <AnchorPane fx:id="definitiveStack2" layoutX="475.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
       <AnchorPane fx:id="definitiveStack3" layoutX="566.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
@@ -48,5 +60,6 @@
          </padding></AnchorPane>
       <Separator layoutY="124.0" prefWidth="748.0" />
       <Separator layoutX="373.0" layoutY="-76.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="5.0" />
+        
     </children>
 </AnchorPane>

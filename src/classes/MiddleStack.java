@@ -15,6 +15,7 @@ public class MiddleStack {
 
         int selectedValue = Integer.parseInt(selected.getValue());
         int lastValue = Integer.parseInt(top().getValue());
+        System.out.println(lastValue + " " + selectedValue);
 
         if(selectedValue + 1 == lastValue){
             return Card.diffColors(selected.getSuit(), top().getSuit());
@@ -37,7 +38,7 @@ public class MiddleStack {
 
     public Card unStack(){
         if(stack.size() > 0){
-            return stack.get(stack.size() - 1);
+            return stack.remove(stack.size() - 1);
         } else {
             return null;
         }
