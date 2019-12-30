@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="preparing card movement">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="card movement completed">
+      <change afterPath="$PROJECT_DIR$/src/main/Attr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/MiddleStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/MiddleStack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -58,8 +58,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -312,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577503869896</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="card movement completed">
+      <created>1577669871651</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1577669871651</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -332,7 +339,8 @@
     <MESSAGE value="new stacks structure" />
     <MESSAGE value="event click in top stacks" />
     <MESSAGE value="preparing card movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="preparing card movement" />
+    <MESSAGE value="card movement completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="card movement completed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="124" width="802" height="672" key="#Project_Structure" timestamp="1576717197492">
@@ -347,30 +355,30 @@
       <screen x="0" y="25" width="1600" height="875" />
     </state>
     <state x="608" y="149" width="376" height="621" key="#com.intellij.ide.util.MemberChooser/0.25.1600.875@0.25.1600.875" timestamp="1577668348980" />
-    <state x="905" y="79" width="629" height="800" key="CommitChangelistDialog2" timestamp="1577503869661">
+    <state x="905" y="79" width="629" height="800" key="CommitChangelistDialog2" timestamp="1577669871017">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state x="905" y="79" width="629" height="800" key="CommitChangelistDialog2/0.25.1600.875@0.25.1600.875" timestamp="1577503869661" />
+    <state x="905" y="79" width="629" height="800" key="CommitChangelistDialog2/0.25.1600.875@0.25.1600.875" timestamp="1577669871017" />
     <state x="486" y="204" width="612" height="507" key="FileChooserDialogImpl" timestamp="1576713912075">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
     <state x="486" y="204" width="612" height="507" key="FileChooserDialogImpl/0.25.1600.875@0.25.1600.875" timestamp="1576713912075" />
-    <state width="1554" height="199" key="GridCell.Tab.0.bottom" timestamp="1577668170711">
+    <state width="1554" height="199" key="GridCell.Tab.0.bottom" timestamp="1577670247849">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state width="1554" height="199" key="GridCell.Tab.0.bottom/0.25.1600.875@0.25.1600.875" timestamp="1577668170711" />
-    <state width="1554" height="199" key="GridCell.Tab.0.center" timestamp="1577668170711">
+    <state width="1554" height="199" key="GridCell.Tab.0.bottom/0.25.1600.875@0.25.1600.875" timestamp="1577670247849" />
+    <state width="1554" height="199" key="GridCell.Tab.0.center" timestamp="1577670247848">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state width="1554" height="199" key="GridCell.Tab.0.center/0.25.1600.875@0.25.1600.875" timestamp="1577668170711" />
-    <state width="1554" height="199" key="GridCell.Tab.0.left" timestamp="1577668170710">
+    <state width="1554" height="199" key="GridCell.Tab.0.center/0.25.1600.875@0.25.1600.875" timestamp="1577670247848" />
+    <state width="1554" height="199" key="GridCell.Tab.0.left" timestamp="1577670247848">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state width="1554" height="199" key="GridCell.Tab.0.left/0.25.1600.875@0.25.1600.875" timestamp="1577668170710" />
-    <state width="1554" height="199" key="GridCell.Tab.0.right" timestamp="1577668170711">
+    <state width="1554" height="199" key="GridCell.Tab.0.left/0.25.1600.875@0.25.1600.875" timestamp="1577670247848" />
+    <state width="1554" height="199" key="GridCell.Tab.0.right" timestamp="1577670247849">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state width="1554" height="199" key="GridCell.Tab.0.right/0.25.1600.875@0.25.1600.875" timestamp="1577668170711" />
+    <state width="1554" height="199" key="GridCell.Tab.0.right/0.25.1600.875@0.25.1600.875" timestamp="1577670247849" />
     <state width="1554" height="275" key="GridCell.Tab.1.bottom" timestamp="1577503872173">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
@@ -395,10 +403,10 @@
       <screen x="0" y="25" width="1600" height="875" />
     </state>
     <state x="650" y="380" width="292" height="160" key="VCS.ChangelistChooser/0.25.1600.875@0.25.1600.875" timestamp="1577470392606" />
-    <state x="395" y="199" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1577490251362">
+    <state x="395" y="199" width="802" height="523" key="Vcs.Push.Dialog.v2" timestamp="1577669877893">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
-    <state x="395" y="199" width="802" height="523" key="Vcs.Push.Dialog.v2/0.25.1600.875@0.25.1600.875" timestamp="1577490251362" />
+    <state x="395" y="199" width="802" height="523" key="Vcs.Push.Dialog.v2/0.25.1600.875@0.25.1600.875" timestamp="1577669877893" />
     <state x="375" y="202" width="841" height="517" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1577498343717">
       <screen x="0" y="25" width="1600" height="875" />
     </state>
