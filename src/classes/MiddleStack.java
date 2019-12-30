@@ -3,7 +3,8 @@ package classes;
 import java.util.ArrayList;
 
 public class MiddleStack {
-    public ArrayList<Card> stack;
+    private ArrayList<Card> stack;
+    private int nPilha;
 
     public MiddleStack(){
         stack = new ArrayList<Card>();
@@ -40,5 +41,13 @@ public class MiddleStack {
         } else {
             return null;
         }
+    }
+
+    public int getnPilha() {
+        return nPilha;
+    }
+
+    public void setnPilha(int nPilha) {
+        this.nPilha = nPilha;
     }
 }

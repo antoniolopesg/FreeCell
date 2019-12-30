@@ -122,11 +122,7 @@ public class Controller implements Initializable {
 
             stylizeCard(cont);
 
-            if(childrens.size() > 0) {
-                int size = childrens.size();
-                cont.setLayoutY(childrens.get(size - 1).getLayoutY() + 17);
-            }
-            childrens.add(cont);
+            stackCard(childrens, cont);
         }
 
         setEvents();
@@ -146,25 +142,33 @@ public class Controller implements Initializable {
 
     public void initializeMiddleStacks(){
         stack1 = new MiddleStack();
+        stack1.setnPilha(1);
         stack2 = new MiddleStack();
+        stack2.setnPilha(2);
         stack3 = new MiddleStack();
+        stack3.setnPilha(3);
         stack4 = new MiddleStack();
+        stack4.setnPilha(4);
         stack5 = new MiddleStack();
+        stack5.setnPilha(5);
         stack6 = new MiddleStack();
+        stack6.setnPilha(6);
         stack7 = new MiddleStack();
+        stack7.setnPilha(7);
         stack8 = new MiddleStack();
+        stack8.setnPilha(8);
     }
 
     public void setEvents(){
         for (int i = 1; i <= 8; i++){
-            MiddleStack stack = IntMiddleStack(i);
+            MiddleStack stack = intMiddleStack(i);
             stack.top().getContainer().setOnMouseClicked(mouseEvent -> {
                 this.selectedCard = stack.top();
             });
         }
     }
 
-    public MiddleStack IntMiddleStack(int stackInt){
+    public MiddleStack intMiddleStack(int stackInt){
         MiddleStack stack = null;
         switch (stackInt){
             case 1:
@@ -190,6 +194,38 @@ public class Controller implements Initializable {
                 break;
             case 8:
                 stack = stack8;
+                break;
+        }
+
+        return stack;
+    }
+
+    public AnchorPane intMiddleToAnchor(int stackInt){
+        AnchorPane stack = null;
+        switch (stackInt){
+            case 1:
+                stack = stackA;
+                break;
+            case 2:
+                stack = stackB;
+                break;
+            case 3:
+                stack = stackC;
+                break;
+            case 4:
+                stack = stackD;
+                break;
+            case 5:
+                stack = stackE;
+                break;
+            case 6:
+                stack = stackF;
+                break;
+            case 7:
+                stack = stackG;
+                break;
+            case 8:
+                stack = stackH;
                 break;
         }
 
@@ -257,12 +293,39 @@ public class Controller implements Initializable {
     public void clickedAnchorPane(MouseEvent mouseEvent, AnchorPane stack){
         if(this.selectedCard != null){
             MiddleStack clickedStack = AnchorMiddleStack(stack);
-            if(clickedStack.canPush(this.selectedCard)){
-                System.out.println("pode mover");
+            AnchorPane clickedAnchor = intMiddleToAnchor(this.selectedCard.getCurrentStack());
 
-            } else {
-                System.out.println("não pode mover");
+            if(clickedStack.canPush(this.selectedCard)){
+                MiddleStack lastStack = intMiddleStack(this.selectedCard.getCurrentStack());
+                resetEvents();
+                clickedStack.push(lastStack.unStack());
+
+                clickedAnchor.getChildren().remove(this.selectedCard.getContainer());
+
+                if(stack.getChildren().size() > 0){
+                    int size = stack.getChildren().size();
+                    selectedCard.getContainer().setLayoutY(stack.getChildren().get(size - 1).getLayoutY() + 17);
+                }
+                stack.getChildren().add(this.selectedCard.getContainer());
+
+                this.selectedCard = null;
+                setEvents();
             }
+        }
+    }
+
+    public void stackCard(ObservableList<Node> childrens, ImageView cardContainer){
+        if(childrens.size() > 0) {
+            int size = childrens.size();
+            cardContainer.setLayoutY(childrens.get(size - 1).getLayoutY() + 17);
+        }
+        childrens.add(cardContainer);
+    }
+
+    public void resetEvents(){
+        for (int i = 1; i <= 8; i++){
+            MiddleStack stack = intMiddleStack(i);
+            stack.top().getContainer().setOnMouseClicked(null);
         }
     }
 }
