@@ -3,8 +3,8 @@ package classes;
 import java.util.ArrayList;
 
 public class MiddleStack {
-    private ArrayList<Card> stack;
-    private int nPilha;
+    protected ArrayList<Card> stack;
+    protected int nPilha;
 
     public MiddleStack(){
         stack = new ArrayList<Card>();

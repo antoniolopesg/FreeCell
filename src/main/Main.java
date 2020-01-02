@@ -13,6 +13,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         primaryStage.setTitle("FreeCell - Antonio Lopes && Weverton Pereira");
         primaryStage.setScene(new Scene(root, 748, 600));
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 

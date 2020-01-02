@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -173,6 +172,27 @@ public class Controller extends Attr {
         return stack;
     }
 
+    public MovementSpace intSpace(int spaceInt){
+        MovementSpace space = null;
+
+        switch (spaceInt){
+            case 9:
+                space = movementSpace1;
+                break;
+            case 10:
+                space = movementSpace2;
+                break;
+            case 11:
+                space = movementSpace3;
+                break;
+            case 12:
+                space = movementSpace4;
+                break;
+        }
+
+        return space;
+    }
+
     public AnchorPane intMiddleToAnchor(int stackInt){
         AnchorPane stack = null;
         switch (stackInt){
@@ -324,8 +344,51 @@ public class Controller extends Attr {
         }
     }
 
-    public void spaceToMiddle(AnchorPane stack){
+    public AnchorPane spaceToAnchor(int nSpace){
+        AnchorPane anchor = null;
 
+        switch (nSpace){
+            case 9:
+                anchor = movementSpaceA;
+                break;
+            case 10:
+                anchor = movementSpaceB;
+                break;
+            case 11:
+                anchor = movementSpaceC;
+                break;
+            case 12:
+                anchor = movementSpaceD;
+                break;
+        }
+
+        return anchor;
+    }
+
+    public void spaceToMiddle(AnchorPane stack){
+        MiddleStack clickedStack = AnchorMiddleStack(stack);
+
+        MovementSpace space = intSpace(this.selectedCard.getCurrentStack());
+        AnchorPane spaceAnchor = spaceToAnchor(space.getnSpace());
+
+        if(clickedStack.canPush(this.selectedCard)){
+            clickedStack.push(space.getReserve());
+            space.setReserve(null);
+
+            this.selectedCard.setCurrentStack(clickedStack.getnPilha());
+            spaceAnchor.getChildren().remove(this.selectedCard.getContainer());
+
+            if(stack.getChildren().size() > 0){
+                int size = stack.getChildren().size();
+                selectedCard.getContainer().setLayoutY(stack.getChildren().get(size - 1).getLayoutY() + 17);
+            } else {
+                selectedCard.getContainer().setLayoutY(0);
+            }
+            stack.getChildren().add(this.selectedCard.getContainer());
+
+            this.selectedCard = null;
+            setEvents();
+        }
     }
 
     public void setEventClickSpaces(){
@@ -363,7 +426,7 @@ public class Controller extends Attr {
 
     public void clickedMovementSpace(MouseEvent mouseEvent, AnchorPane space){
         MovementSpace clicked = anchorMovementSpace(space);
-        if(this.selectedCard != null && clicked.getReserve() == null){
+        if(this.selectedCard != null && clicked.getReserve() == null && this.selectedCard.getCurrentStack() < 9){
             MiddleStack selectedStack = intMiddleStack(this.selectedCard.getCurrentStack());
             clicked.setReserve(selectedStack.unStack());
 

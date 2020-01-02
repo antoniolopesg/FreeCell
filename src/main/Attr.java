@@ -1,6 +1,7 @@
 package main;
 
 import classes.Card;
+import classes.DefinitiveStack;
 import classes.MiddleStack;
 import classes.MovementSpace;
 import javafx.fxml.Initializable;
@@ -27,10 +28,19 @@ public abstract class Attr implements Initializable {
     /**
      * AnchorPane das pilhas definitivas
      */
-    public AnchorPane definitiveStack1;
-    public AnchorPane definitiveStack2;
-    public AnchorPane definitiveStack3;
-    public AnchorPane definitiveStack4;
+    public AnchorPane definitiveStackA;
+    public AnchorPane definitiveStackB;
+    public AnchorPane definitiveStackC;
+    public AnchorPane definitiveStackD;
+
+    /**
+     * Classes das pilhas definitivas
+     */
+
+    public DefinitiveStack definitiveStack1;
+    public DefinitiveStack definitiveStack2;
+    public DefinitiveStack definitiveStack3;
+    public DefinitiveStack definitiveStack4;
 
     /**
      * AnchorPane das pilhas intermediárias

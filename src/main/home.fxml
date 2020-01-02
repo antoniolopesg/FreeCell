@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="mainAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="748.0" style="-fx-background-color: #16a085;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
@@ -22,10 +24,38 @@
          <padding>
             <Insets bottom="-1.0" left="-1.0" />
          </padding></AnchorPane>
-      <AnchorPane fx:id="definitiveStack1" layoutX="384.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="definitiveStack2" layoutX="475.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="definitiveStack3" layoutX="566.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
-      <AnchorPane fx:id="definitiveStack4" layoutX="657.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;" />
+      <AnchorPane fx:id="definitiveStackA" layoutX="384.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <children>
+            <ImageView layoutX="2.0" layoutY="2.0">
+               <image>
+                  <Image url="@../cards/suits/hearts.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="definitiveStackB" layoutX="475.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <children>
+            <ImageView layoutX="2.0" layoutY="2.0">
+               <image>
+                  <Image url="@../cards/suits/diamonds.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="definitiveStackC" layoutX="566.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <children>
+            <ImageView layoutX="2.0" layoutY="2.0">
+               <image>
+                  <Image url="@../cards/suits/clubs.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="definitiveStackD" layoutX="657.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
+         <children>
+            <ImageView layoutX="2.0" layoutY="2.0">
+               <image>
+                  <Image url="@../cards/suits/spades.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
       <AnchorPane fx:id="stackA" layoutX="20.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
