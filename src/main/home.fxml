@@ -31,7 +31,10 @@
                   <Image url="@../cards/suits/hearts.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding></AnchorPane>
       <AnchorPane fx:id="definitiveStackB" layoutX="475.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <children>
             <ImageView layoutX="2.0" layoutY="2.0">
@@ -39,7 +42,10 @@
                   <Image url="@../cards/suits/diamonds.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding></AnchorPane>
       <AnchorPane fx:id="definitiveStackC" layoutX="566.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <children>
             <ImageView layoutX="2.0" layoutY="2.0">
@@ -47,7 +53,10 @@
                   <Image url="@../cards/suits/clubs.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding></AnchorPane>
       <AnchorPane fx:id="definitiveStackD" layoutX="657.0" layoutY="20.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <children>
             <ImageView layoutX="2.0" layoutY="2.0">
@@ -55,7 +64,10 @@
                   <Image url="@../cards/suits/spades.png" />
                </image>
             </ImageView>
-         </children></AnchorPane>
+         </children>
+         <padding>
+            <Insets bottom="5.0" />
+         </padding></AnchorPane>
       <AnchorPane fx:id="stackA" layoutX="20.0" layoutY="155.0" prefHeight="95.0" prefWidth="71.0" style="-fx-border-color: white;">
          <padding>
             <Insets bottom="10.0" left="-1.0" />
@@ -88,8 +100,8 @@
          <padding>
             <Insets bottom="10.0" left="-1.0" />
          </padding></AnchorPane>
-      <Separator layoutY="124.0" prefWidth="748.0" />
-      <Separator layoutX="373.0" layoutY="-76.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="5.0" />
+      <Separator layoutY="135.0" prefWidth="748.0" />
+      <Separator layoutX="373.0" layoutY="-65.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="5.0" />
         
     </children>
 </AnchorPane>

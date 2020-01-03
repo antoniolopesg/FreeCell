@@ -1,6 +1,7 @@
 package main;
 
 import classes.Card;
+import classes.DefinitiveStack;
 import classes.MiddleStack;
 import classes.MovementSpace;
 import javafx.collections.ObservableList;
@@ -20,12 +21,13 @@ public class Controller extends Attr {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        selectedCard = null;
         initializeMiddleStacks();
         initializeMovementSpaces();
+        initializeDefinitiveStacks();
         fillStacks(Card.loadCards());
         setEventClickAnchors();
         setEventClickSpaces();
+        setEventClickDefinitive();
     }
 
     public void fillStacks(ArrayList<Card> deck){
@@ -442,5 +444,100 @@ public class Controller extends Attr {
             this.selectedCard = null;
             setEvents();
         }
+    }
+
+    public void initializeDefinitiveStacks(){
+        definitiveStack1 = new DefinitiveStack();
+        definitiveStack1.setnPilha(13);
+        definitiveStack1.setSuit(Card.HEARTS);
+
+
+        definitiveStack2 = new DefinitiveStack();
+        definitiveStack2.setnPilha(14);
+        definitiveStack2.setSuit(Card.DIAMONDS);
+
+        definitiveStack3 = new DefinitiveStack();
+        definitiveStack3.setnPilha(15);
+        definitiveStack3.setSuit(Card.CLUBS);
+
+        definitiveStack4 = new DefinitiveStack();
+        definitiveStack4.setnPilha(16);
+        definitiveStack4.setSuit(Card.SPADES);
+    }
+
+    public void setEventClickDefinitive(){
+        definitiveStackA.setOnMouseClicked(mouseEvent -> {
+            clickedDefinitiveAnchor(mouseEvent, definitiveStackA);
+        });
+        definitiveStackB.setOnMouseClicked(mouseEvent -> {
+            clickedDefinitiveAnchor(mouseEvent, definitiveStackB);
+        });
+
+        definitiveStackC.setOnMouseClicked(mouseEvent -> {
+            clickedDefinitiveAnchor(mouseEvent, definitiveStackC);
+        });
+
+        definitiveStackD.setOnMouseClicked(mouseEvent -> {
+            clickedDefinitiveAnchor(mouseEvent, definitiveStackD);
+        });
+    }
+
+    public void clickedDefinitiveAnchor(MouseEvent mouseEvent, AnchorPane stack){
+        if(this.selectedCard != null){
+            if(this.selectedCard.getCurrentStack() <= 8){
+                middleToDefinitive(stack);
+            } else {
+                spaceToDefinitive(stack);
+            }
+        }
+    }
+
+    private void spaceToDefinitive(AnchorPane stack) {
+        DefinitiveStack clicked = anchorDefinitive(stack);
+
+        if(clicked.canPush(this.selectedCard)){
+            MovementSpace lastSpace = intSpace(this.selectedCard.getCurrentStack());
+            AnchorPane last = spaceToAnchor(lastSpace.getnSpace());
+
+            Card spaceCard = lastSpace.getReserve();
+            ImageView cardContainer = spaceCard.getContainer();
+
+            cardContainer.setOnMouseClicked(null);
+            cardContainer.setCursor(Cursor.DEFAULT);
+            cardContainer.setLayoutY(2);
+            cardContainer.setLayoutX(2);
+
+            clicked.push(spaceCard);
+
+            last.getChildren().remove(cardContainer);
+            stack.getChildren().add(cardContainer);
+
+            lastSpace.setReserve(null);
+            spaceCard.setCurrentStack(clicked.getnPilha());
+        }
+    }
+
+    private void middleToDefinitive(AnchorPane stack) {
+        DefinitiveStack clicked = anchorDefinitive(stack);
+
+        if(clicked.canPush(this.selectedCard)){
+
+        }
+    }
+
+    public DefinitiveStack anchorDefinitive(AnchorPane stack) {
+        DefinitiveStack stackD = null;
+
+        if(stack.equals(definitiveStackA)){
+            stackD =  definitiveStack1;
+        } else if(stack.equals(definitiveStackB)){
+            stackD = definitiveStack2;
+        } else if(stack.equals(definitiveStackC)){
+            stackD = definitiveStack3;
+        } else {
+            stackD = definitiveStack4;
+        }
+
+        return stackD;
     }
 }

@@ -36,7 +36,6 @@ public abstract class Attr implements Initializable {
     /**
      * Classes das pilhas definitivas
      */
-
     public DefinitiveStack definitiveStack1;
     public DefinitiveStack definitiveStack2;
     public DefinitiveStack definitiveStack3;

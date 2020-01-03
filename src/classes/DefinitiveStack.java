@@ -15,9 +15,13 @@ public class DefinitiveStack extends MiddleStack {
             int lastValue = Integer.parseInt(top().getValue());
 
             return lastValue + 1 == selectedValue;
+        } else {
+            if(selected.getValue().equals("1")){
+                return true;
+            }
         }
 
-        return true;
+        return false;
     }
 
     public boolean isFull(){
