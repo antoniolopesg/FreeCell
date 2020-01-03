@@ -489,6 +489,7 @@ public class Controller extends Attr {
             } else {
                 spaceToDefinitive(stack);
             }
+            this.selectedCard = null;
         }
     }
 
@@ -521,7 +522,22 @@ public class Controller extends Attr {
         DefinitiveStack clicked = anchorDefinitive(stack);
 
         if(clicked.canPush(this.selectedCard)){
+            MiddleStack lastMiddle = intMiddleStack(this.selectedCard.getCurrentStack());
+            AnchorPane last = intMiddleToAnchor(lastMiddle.getnPilha());
 
+            Card middleCard = lastMiddle.unStack();
+            ImageView cardContainer = middleCard.getContainer();
+
+            cardContainer.setOnMouseClicked(null);
+            cardContainer.setCursor(Cursor.DEFAULT);
+            cardContainer.setLayoutY(2);
+            cardContainer.setLayoutX(2);
+
+            clicked.push(middleCard);
+
+            last.getChildren().remove(cardContainer);
+            stack.getChildren().add(cardContainer);
+            middleCard.setCurrentStack(clicked.getnPilha());
         }
     }
 
