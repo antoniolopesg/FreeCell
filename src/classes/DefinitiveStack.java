@@ -3,6 +3,12 @@ package classes;
 public class DefinitiveStack extends MiddleStack {
     private int suit;
 
+    public DefinitiveStack(int nPilha, int suit){
+        super();
+        this.setnPilha(nPilha);
+        this.setSuit(suit);
+    }
+
     public int getSuit() {
         return suit;
     }

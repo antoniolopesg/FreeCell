@@ -7,6 +7,7 @@ import classes.MovementSpace;
 import javafx.collections.ObservableList;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -24,7 +25,7 @@ public class Controller extends Attr {
         initializeMiddleStacks();
         initializeMovementSpaces();
         initializeDefinitiveStacks();
-        fillStacks(Card.loadCards());
+        fillStacksDebug(Card.loadCards());
         setEventClickAnchors();
         setEventClickSpaces();
         setEventClickDefinitive();
@@ -38,6 +39,7 @@ public class Controller extends Attr {
 
             int nextIndex = generator.nextInt(deck.size());
             Card nextCard = deck.remove(nextIndex);
+
             switch (generator.nextInt(8)){
                 case 0:
                     next = stackA;
@@ -74,7 +76,7 @@ public class Controller extends Attr {
                     nextCard.setCurrentStack(7);
                     stack7.push(nextCard);
                     break;
-                case 7:
+                default:
                     next = stackH;
                     nextCard.setCurrentStack(8);
                     stack8.push(nextCard);
@@ -92,8 +94,26 @@ public class Controller extends Attr {
         setEvents();
     }
 
+    public void fillStacksDebug(ArrayList<Card> deck){
+
+        for (int j = 1; j <= 4; j++){
+            for(int i = 12; i >= 0; i--){
+                AnchorPane atual = intMiddleToAnchor(j);
+                MiddleStack atualMiddle = intMiddleStack(j);
+
+                Card nextCard = deck.remove(i);
+                atualMiddle.push(nextCard);
+                nextCard.setCurrentStack(j);
+
+                stylizeCard(nextCard.getContainer());
+                stackCard(atual.getChildren(), nextCard.getContainer());
+            }
+        }
+
+        setEvents();
+    }
+
     public void stylizeCard(ImageView container){
-        container.setCursor(Cursor.CLOSED_HAND);
         container.setOpacity(0.95);
 
         DropShadow shadow = new DropShadow();
@@ -101,6 +121,7 @@ public class Controller extends Attr {
         shadow.setOffsetX(1.0);
         shadow.setOffsetY(1.0);
         shadow.setColor(Color.color(0, 0, 0, 0.8));
+
         container.setEffect(shadow);
     }
 
@@ -127,6 +148,7 @@ public class Controller extends Attr {
         for (int i = 1; i <= 8; i++){
             MiddleStack stack = intMiddleStack(i);
             if(stack.top() != null){
+                stack.top().getContainer().setCursor(Cursor.CLOSED_HAND);
                 stack.top().getContainer().setOnMouseClicked(mouseEvent -> {
                     this.selectedCard = stack.top();
                     System.out.println(this.selectedCard.getCurrentStack());
@@ -261,7 +283,7 @@ public class Controller extends Attr {
         });
     }
 
-    public MiddleStack AnchorMiddleStack(AnchorPane stack){
+    public MiddleStack anchorMiddleStack(AnchorPane stack){
         MiddleStack stackM = null;
 
         if(stack.equals(stackA)){
@@ -300,48 +322,51 @@ public class Controller extends Attr {
         if(childrens.size() > 0) {
             int size = childrens.size();
             cardContainer.setLayoutY(childrens.get(size - 1).getLayoutY() + 17);
+        } else {
+            cardContainer.setLayoutY(0);
         }
+
+
         childrens.add(cardContainer);
     }
 
     public void resetEvents(){
         for (int i = 1; i <= 8; i++){
             MiddleStack stack = intMiddleStack(i);
-            stack.top().getContainer().setOnMouseClicked(null);
+            if(stack.top() != null){
+                Card top = stack.top();
+                top.getContainer().setCursor(Cursor.DEFAULT);
+                top.getContainer().setOnMouseClicked(null);
+            }
         }
     }
 
     public void initializeMovementSpaces(){
-        movementSpace1 = new MovementSpace();
-        movementSpace1.setnSpace(9);
-        movementSpace2 = new MovementSpace();
-        movementSpace2.setnSpace(10);
-        movementSpace3 = new MovementSpace();
-        movementSpace3.setnSpace(11);
-        movementSpace4 = new MovementSpace();
-        movementSpace4.setnSpace(12);
+        movementSpace1 = new MovementSpace(9);
+        movementSpace2 = new MovementSpace(10);
+        movementSpace3 = new MovementSpace(11);
+        movementSpace4 = new MovementSpace(12);
     }
 
     public void middleToMiddle(AnchorPane stack){
-        MiddleStack clickedStack = AnchorMiddleStack(stack);
-        AnchorPane clickedAnchor = intMiddleToAnchor(this.selectedCard.getCurrentStack());
+        MiddleStack clickedStack = anchorMiddleStack(stack);
 
         if(clickedStack.canPush(this.selectedCard)){
+            resetEvents();
+
+            AnchorPane clickedAnchor = intMiddleToAnchor(this.selectedCard.getCurrentStack());
+
             MiddleStack lastStack = intMiddleStack(this.selectedCard.getCurrentStack());
+
             clickedStack.push(lastStack.unStack());
             this.selectedCard.setCurrentStack(clickedStack.getnPilha());
 
             clickedAnchor.getChildren().remove(this.selectedCard.getContainer());
 
-            if(stack.getChildren().size() > 0){
-                int size = stack.getChildren().size();
-                selectedCard.getContainer().setLayoutY(stack.getChildren().get(size - 1).getLayoutY() + 17);
-            } else {
-                selectedCard.getContainer().setLayoutY(0);
-            }
-            stack.getChildren().add(this.selectedCard.getContainer());
+            stackCard(stack.getChildren(), selectedCard.getContainer());
 
             this.selectedCard = null;
+
             setEvents();
         }
     }
@@ -368,25 +393,20 @@ public class Controller extends Attr {
     }
 
     public void spaceToMiddle(AnchorPane stack){
-        MiddleStack clickedStack = AnchorMiddleStack(stack);
+        MiddleStack clickedStack = anchorMiddleStack(stack);
 
         MovementSpace space = intSpace(this.selectedCard.getCurrentStack());
         AnchorPane spaceAnchor = spaceToAnchor(space.getnSpace());
 
         if(clickedStack.canPush(this.selectedCard)){
+            resetEvents();
             clickedStack.push(space.getReserve());
             space.setReserve(null);
 
             this.selectedCard.setCurrentStack(clickedStack.getnPilha());
             spaceAnchor.getChildren().remove(this.selectedCard.getContainer());
 
-            if(stack.getChildren().size() > 0){
-                int size = stack.getChildren().size();
-                selectedCard.getContainer().setLayoutY(stack.getChildren().get(size - 1).getLayoutY() + 17);
-            } else {
-                selectedCard.getContainer().setLayoutY(0);
-            }
-            stack.getChildren().add(this.selectedCard.getContainer());
+            stackCard(stack.getChildren(), selectedCard.getContainer());
 
             this.selectedCard = null;
             setEvents();
@@ -447,22 +467,10 @@ public class Controller extends Attr {
     }
 
     public void initializeDefinitiveStacks(){
-        definitiveStack1 = new DefinitiveStack();
-        definitiveStack1.setnPilha(13);
-        definitiveStack1.setSuit(Card.HEARTS);
-
-
-        definitiveStack2 = new DefinitiveStack();
-        definitiveStack2.setnPilha(14);
-        definitiveStack2.setSuit(Card.DIAMONDS);
-
-        definitiveStack3 = new DefinitiveStack();
-        definitiveStack3.setnPilha(15);
-        definitiveStack3.setSuit(Card.CLUBS);
-
-        definitiveStack4 = new DefinitiveStack();
-        definitiveStack4.setnPilha(16);
-        definitiveStack4.setSuit(Card.SPADES);
+        definitiveStack1 = new DefinitiveStack(13, Card.HEARTS);
+        definitiveStack2 = new DefinitiveStack(14, Card.DIAMONDS);
+        definitiveStack3 = new DefinitiveStack(15, Card.CLUBS);
+        definitiveStack4 = new DefinitiveStack(16, Card.SPADES);
     }
 
     public void setEventClickDefinitive(){
@@ -491,6 +499,7 @@ public class Controller extends Attr {
             }
             this.selectedCard = null;
         }
+        verifyWin();
     }
 
     private void spaceToDefinitive(AnchorPane stack) {
@@ -520,8 +529,10 @@ public class Controller extends Attr {
 
     private void middleToDefinitive(AnchorPane stack) {
         DefinitiveStack clicked = anchorDefinitive(stack);
-
         if(clicked.canPush(this.selectedCard)){
+            resetEvents();
+
+            System.out.println("pode");
             MiddleStack lastMiddle = intMiddleStack(this.selectedCard.getCurrentStack());
             AnchorPane last = intMiddleToAnchor(lastMiddle.getnPilha());
 
@@ -538,6 +549,8 @@ public class Controller extends Attr {
             last.getChildren().remove(cardContainer);
             stack.getChildren().add(cardContainer);
             middleCard.setCurrentStack(clicked.getnPilha());
+
+            setEvents();
         }
     }
 
@@ -555,5 +568,16 @@ public class Controller extends Attr {
         }
 
         return stackD;
+    }
+
+    public void verifyWin(){
+        if(definitiveStack1.isFull() && definitiveStack2.isFull() && definitiveStack3.isFull() && definitiveStack4.isFull()){
+            Alert success = new Alert(Alert.AlertType.INFORMATION, "PARABÉNS! VOCÊ VENCEU!");
+            success.show();
+
+            success.setOnCloseRequest(eventHandler -> {
+                Main.screen.close();
+            });
+        }
     }
 }

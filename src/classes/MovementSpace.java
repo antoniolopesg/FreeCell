@@ -4,8 +4,8 @@ public class MovementSpace {
     private Card reserve;
     private int nSpace;
 
-    public MovementSpace(){
-        this.setReserve(null);
+    public MovementSpace(int nSpace){
+        this.setnSpace(nSpace);
     }
 
     public Card getReserve() {

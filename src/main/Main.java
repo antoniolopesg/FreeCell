@@ -7,14 +7,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    public static Stage screen;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
-        primaryStage.setTitle("FreeCell - Antonio Lopes && Weverton Pereira");
-        primaryStage.setScene(new Scene(root, 748, 600));
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        screen = primaryStage;
+        screen.setTitle("FreeCell - Antonio Lopes && Weverton Pereira");
+        screen.setScene(new Scene(root, 748, 600));
+        screen.setResizable(false);
+        screen.show();
     }
 
 
